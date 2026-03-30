@@ -64,14 +64,27 @@ class MinesweeperScreen extends StatelessWidget {
             ),
             itemCount: 64, // 8x8 = 64 celdas
             itemBuilder: (context, index) {
-              return Container(
-                decoration: BoxDecoration(
-                  color: Colors.blueGrey[400],
-                  border: Border.all(color: Colors.blueGrey[600]!, width: 1.5),
-                ),
-              ); // Cada celda es un widget
+              return MineCell(index: index); // Cada celda es un widget
             },
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class MineCell extends StatelessWidget {
+  final int index;
+  const MineCell({Key? key, required this.index}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 38, 107, 69),
+        border: Border.all(
+          color: const Color.fromARGB(255, 50, 104, 62),
+          width: 1.5,
         ),
       ),
     );
