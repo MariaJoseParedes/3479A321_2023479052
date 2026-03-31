@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart'; //para los iconos jje
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,19 +24,38 @@ class MinesweeperScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Buscaminas')),
+      appBar: AppBar(
+        title: Text(
+          'Buscaminas',
+          style: GoogleFonts.pressStart2p(fontSize: 20, color: Colors.pink),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
             // Área de Status
             Container(
               height: 60,
-              color: const Color.fromARGB(176, 224, 224, 224),
-              child: const Center(
-                child: Text(
-                  'STATUS: 349 segundos | Minas: 10 | Cuadros: 56',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
+              color: const Color.fromARGB(175, 156, 94, 143),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Icon(
+                    Icons.hourglass_top_sharp,
+                    color: Color.fromARGB(255, 168, 72, 152),
+                  ),
+                  Text(
+                    '349 s',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  Icon(
+                    FontAwesomeIcons.bomb,
+                    color: Color.fromARGB(255, 173, 89, 152),
+                  ),
+                  Text('Minas: 10', style: TextStyle(fontSize: 18)),
+                  Icon(Icons.stop, color: Color.fromARGB(255, 159, 72, 167)),
+                  Text('Cuadros: 56', style: TextStyle(fontSize: 18)),
+                ],
               ),
             ),
             const Divider(height: 1),
@@ -81,9 +102,9 @@ class MineCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 38, 107, 69),
+        color: const Color.fromARGB(255, 184, 88, 125),
         border: Border.all(
-          color: const Color.fromARGB(255, 50, 104, 62),
+          color: const Color.fromARGB(255, 16, 37, 21),
           width: 1.5,
         ),
       ),
