@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_app/ui/widgets/mine_cell.dart';
+import 'dart:math' as math;
 
 class MinesweeperScreen extends StatelessWidget {
   const MinesweeperScreen({Key? key}) : super(key: key);
@@ -24,12 +25,10 @@ class MinesweeperScreen extends StatelessWidget {
               color: const Color.fromARGB(175, 156, 94, 143),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Icon(
-                    Icons.hourglass_top_sharp,
-                    color: Color.fromARGB(255, 168, 72, 152),
-                  ),
-                  Text(
+                children: [
+                  Image.asset('assets/icons/bomba.png', width: 30, height: 30),
+                  const SizedBox(width: 1),
+                  const Text(
                     '349 s',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
