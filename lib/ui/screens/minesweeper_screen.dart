@@ -26,18 +26,14 @@ class MinesweeperScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset('assets/icons/bomba.png', width: 30, height: 30),
-                  const SizedBox(width: 1),
+                  Image.asset('assets/icons/reloj.png', width: 30, height: 30),
                   const Text(
                     '349 s',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  Icon(
-                    FontAwesomeIcons.bomb,
-                    color: Color.fromARGB(255, 173, 89, 152),
-                  ),
+                  Image.asset('assets/icons/bomba.png', width: 30, height: 30),
                   Text('Minas: 10', style: TextStyle(fontSize: 18)),
-                  Icon(Icons.stop, color: Color.fromARGB(255, 159, 72, 167)),
+                  Image.asset('assets/icons/bloque.png', width: 30, height: 30),
                   Text('Cuadros: 56', style: TextStyle(fontSize: 18)),
                 ],
               ),
