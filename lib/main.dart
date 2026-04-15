@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart'; //para los iconos jje
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logger/logger.dart';
+import 'package:my_app/ui/screens/about.dart';
 import 'package:my_app/ui/screens/minesweeper_screen.dart';
 import 'package:my_app/ui/widgets/mine_cell.dart';
 
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
       title: 'Buscaminas',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 67, 116, 63),
-          primary: const Color.fromARGB(255, 110, 209, 97),
+          seedColor: const Color.fromARGB(255, 90, 58, 109),
+          primary: const Color.fromARGB(255, 97, 114, 209),
           secondary: const Color.fromARGB(255, 143, 149, 247),
         ),
         scaffoldBackgroundColor: const Color.fromARGB(
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
+      routes: {'/about': (_) => const AboutScreen()},
       home: const MinesweeperScreen(), // Apunta a tu nueva pantalla
     );
   }

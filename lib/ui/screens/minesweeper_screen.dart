@@ -13,8 +13,20 @@ class MinesweeperScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Buscaminas',
-          style: GoogleFonts.pressStart2p(fontSize: 20, color: Colors.pink),
+          style: GoogleFonts.pressStart2p(
+            fontSize: 20,
+            color: const Color.fromARGB(255, 62, 45, 141),
+          ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.info_outline),
+            tooltip: 'Acerca de',
+            onPressed: () {
+              Navigator.pushNamed(context, '/about');
+            },
+          ),
+        ],
       ),
       body: SafeArea(
         child: Column(
