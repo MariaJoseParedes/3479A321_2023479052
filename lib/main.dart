@@ -5,6 +5,9 @@ import 'package:logger/logger.dart';
 import 'package:my_app/ui/screens/about.dart';
 import 'package:my_app/ui/screens/minesweeper_screen.dart';
 import 'package:my_app/ui/widgets/mine_cell.dart';
+import 'package:my_app/ui/screens/history_screen.dart';
+
+
 
 var logger = Logger();
 
@@ -39,7 +42,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      routes: {'/about': (_) => const AboutScreen()},
+      routes: {'/about': (_) => const HistoryScreen()},
       home: const MinesweeperScreen(), // Apunta a tu nueva pantalla
     );
   }
