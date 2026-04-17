@@ -6,7 +6,7 @@ import 'package:my_app/ui/screens/about.dart';
 import 'package:my_app/ui/screens/minesweeper_screen.dart';
 import 'package:my_app/ui/widgets/mine_cell.dart';
 import 'package:my_app/ui/screens/history_screen.dart';
-
+import 'package:my_app/ui/screens/menu_screen.dart';
 
 
 var logger = Logger();
@@ -24,6 +24,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/menu',
+      routes: {
+        '/menu': (context) => const MenuScreen(), 
+        '/game': (context) => const MinesweeperScreen(), 
+        '/history': (context) => const HistoryScreen(), 
+        '/about': (context) => const AboutScreen(),     
+        },
       title: 'Buscaminas',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
@@ -42,7 +49,6 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      routes: {'/about': (_) => const HistoryScreen()},
       home: const MinesweeperScreen(), // Apunta a tu nueva pantalla
     );
   }

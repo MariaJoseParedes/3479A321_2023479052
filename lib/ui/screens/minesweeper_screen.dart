@@ -26,6 +26,14 @@ class MinesweeperScreen extends StatelessWidget {
               Navigator.pushNamed(context, '/about');
             },
           ),
+          IconButton(
+            icon: const Icon(Icons.offline_pin),
+            tooltip: 'Menu',
+            onPressed: () {
+              Navigator.pushNamed(context, '/menu');
+            },
+          ),
+          
         ],
       ),
       body: SafeArea(
