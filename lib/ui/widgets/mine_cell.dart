@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MineCell extends StatelessWidget {
   final int index;
-  const MineCell({Key? key, required this.index}) : super(key: key);
+  const MineCell({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {

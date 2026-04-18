@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart'; //para los iconos jje
-import 'package:google_fonts/google_fonts.dart';
+//para los iconos jje
 import 'package:logger/logger.dart';
 import 'package:my_app/ui/screens/about.dart';
 import 'package:my_app/ui/screens/minesweeper_screen.dart';
-import 'package:my_app/ui/widgets/mine_cell.dart';
 import 'package:my_app/ui/screens/history_screen.dart';
 import 'package:my_app/ui/screens/menu_screen.dart';
 

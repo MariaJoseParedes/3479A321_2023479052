@@ -3,12 +3,18 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_app/ui/widgets/mine_cell.dart';
 import 'dart:math' as math;
+import 'package:my_app/ui/screens/menu_screen.dart';
 
 class MinesweeperScreen extends StatelessWidget {
-  const MinesweeperScreen({Key? key}) : super(key: key);
+  const MinesweeperScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+
+    final String difficulty = args?['difficulty'] ?? 'Desconocida';
+    final int gridSize = args?['gridSize'] ?? 8;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -33,7 +39,6 @@ class MinesweeperScreen extends StatelessWidget {
               Navigator.pushNamed(context, '/menu');
             },
           ),
-          
         ],
       ),
       body: SafeArea(
