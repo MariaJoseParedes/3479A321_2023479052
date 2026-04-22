@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_app/ui/widgets/mine_cell.dart';
-import 'dart:math' as math;
-import 'package:my_app/ui/screens/menu_screen.dart';
+//import 'dart:math' as math;
+//import 'package:my_app/ui/screens/menu_screen.dart';
 
 class MinesweeperScreen extends StatelessWidget {
   const MinesweeperScreen({super.key});
@@ -67,7 +67,18 @@ class MinesweeperScreen extends StatelessWidget {
             // Área de Juego
             Expanded(
               //Expande el tablero para llenar la pantalla
-              child: _gameBoard(),
+              child: _gameBoard(gridSize),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'dificultad: $difficulty',
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 48, 34, 58),
+                ),
+              ),
             ), // Aquí llamamos al tablero
           ],
         ),
@@ -75,7 +86,7 @@ class MinesweeperScreen extends StatelessWidget {
     );
   }
 
-  Widget _gameBoard() {
+  Widget _gameBoard(int size) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -83,12 +94,12 @@ class MinesweeperScreen extends StatelessWidget {
           aspectRatio: 1.0, // Cuadrado perfecto
           child: GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 8, // 8 columnas
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: size, // 8 columnas
               crossAxisSpacing: 2.0,
               mainAxisSpacing: 2.0,
             ),
-            itemCount: 64, // 8x8 = 64 celdas
+            itemCount: size * size, // size x size = celdas
             itemBuilder: (context, index) {
               return MineCell(index: index); // Cada celda es un widget
             },
