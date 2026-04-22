@@ -33,7 +33,7 @@ class MinesweeperScreen extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.offline_pin),
+            icon: const Icon(Icons.menu),
             tooltip: 'Menu',
             onPressed: () {
               Navigator.pushNamed(context, '/menu');

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/models/game_result.dart';
 import 'package:my_app/ui/widgets/game_result_card.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({super.key});
@@ -48,7 +49,16 @@ class HistoryScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Historial de Partidas')),
+      appBar: AppBar(
+        title: Text(
+          'Historial de Partidas',
+          style: GoogleFonts.pressStart2p(
+            fontSize: 15,
+            color: const Color.fromARGB(255, 62, 45, 141),
+          ),
+        ),
+        centerTitle: false,
+      ),
       body: ListView.builder(
         itemCount: listMaqueta.length,
         itemBuilder: (context, index) {
