@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/models/cell_model.dart';
 
 class MineCell extends StatelessWidget {
-  final int index;
-  const MineCell({super.key, required this.index});
+
+  final CellModel cell;
+  final VoidCallback onTap;
+  
+  const MineCell({
+    super.key,
+    required this.cell,
+    required this.onTap,
+  });
+
 
   @override
   Widget build(BuildContext context) {

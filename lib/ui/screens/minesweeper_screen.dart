@@ -5,7 +5,6 @@ import 'package:my_app/models/cell_model.dart';
 import 'package:my_app/ui/widgets/mine_cell.dart';
 import 'package:logger/logger.dart';
 
-
 class MinesweeperScreen extends StatefulWidget {
   const MinesweeperScreen({super.key});
 
@@ -14,9 +13,48 @@ class MinesweeperScreen extends StatefulWidget {
 }
 
 class _MinesweeperScreenState extends State<MinesweeperScreen> {
-  late List<List<CellModel>> _cells;
+  late List<CellModel> _cells;
   final logger = Logger();
 
+  @override
+  void initState() {
+    super.initState();
+    // 1. Inicializamos el estado del tablero
+    _cells = List.generate(64, (i) => CellModel(index: i));
+    logger.i('Lifecycle: initState() - El estado ha sido creado.');
+  }
+
+  void _onCellTapped(int index) {
+    setState(() {
+      _cells[index].isRevealed = true;
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    logger.i(
+      'Lifecycle: didChangeDependencies() - Contexto listo o dependencias cambiadas.',
+    );
+  }
+
+  // 3. ACTUALIZACIÓN: Se llama cada vez que el widget padre envía nuevos parámetros.
+  @override
+  void didUpdateWidget(covariant MinesweeperScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    logger.w(
+      'Lifecycle: didUpdateWidget() - La configuración del widget ha cambiado.',
+    );
+  }
+
+  // 4. DESTRUCCIÓN: Se llama cuando el widget se elimina permanentemente (ej. al hacer Pop).
+  @override
+  void dispose() {
+    logger.e(
+      'Lifecycle: dispose() - El estado se destruye. Liberando memoria.',
+    );
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +149,12 @@ class _MinesweeperScreenState extends State<MinesweeperScreen> {
             ),
             itemCount: size * size, // size x size = celdas
             itemBuilder: (context, index) {
-              return MineCell(index: index); // Cada celda es un widget
+              return MineCell(
+                cell: _cells[index],
+                onTap: () {
+                  _onCellTapped(index);
+                },
+              ); // Cada celda es un widget
             },
           ),
         ),
