@@ -2,7 +2,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'cell_model.dart';
 
-
 class GameViewModel extends ChangeNotifier {
   List<CellModel> _cells = [];
   bool _isGameOver = false;
