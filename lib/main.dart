@@ -50,7 +50,10 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const MinesweeperScreen(), // Apunta a tu nueva pantalla
+      home: ChangeNotifierProvider(
+        create: (context) => GameViewModel(),
+        child: const MinesweeperScreen(),
+      ),
     );
   }
 }
