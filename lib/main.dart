@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-//para los iconos jje
 import 'package:logger/logger.dart';
 import 'package:my_app/ui/screens/about.dart';
 import 'package:my_app/ui/screens/minesweeper_screen.dart';
 import 'package:my_app/ui/screens/history_screen.dart';
 import 'package:my_app/ui/screens/menu_screen.dart';
-
+import 'package:my_app/models/game_view_model.dart';
+import 'package:provider/provider.dart';
 
 var logger = Logger();
 
@@ -24,11 +24,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/menu',
       routes: {
-        '/menu': (context) => const MenuScreen(), 
-        '/game': (context) => const MinesweeperScreen(), 
-        '/history': (context) => const HistoryScreen(), 
-        '/about': (context) => const AboutScreen(),     
-        },
+        '/menu': (context) => const MenuScreen(),
+        '/game': (context) => ChangeNotifierProvider(
+          create: (context) => GameViewModel(),
+          child: const MinesweeperScreen(),
+        ),
+        '/history': (context) => const HistoryScreen(),
+        '/about': (context) => const AboutScreen(),
+      },
       title: 'Buscaminas',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
