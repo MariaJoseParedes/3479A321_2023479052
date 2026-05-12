@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
 //import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_app/models/cell_model.dart';
 import 'package:my_app/ui/widgets/mine_cell.dart';
-//import 'dart:math' as math;
-//import 'package:my_app/ui/screens/menu_screen.dart';
+import 'package:logger/logger.dart';
 
-class MinesweeperScreen extends StatelessWidget {
+
+class MinesweeperScreen extends StatefulWidget {
   const MinesweeperScreen({super.key});
+
+  @override
+  State<MinesweeperScreen> createState() => _MinesweeperScreenState();
+}
+
+class _MinesweeperScreenState extends State<MinesweeperScreen> {
+  late List<List<CellModel>> _cells;
+  final logger = Logger();
+
 
   @override
   Widget build(BuildContext context) {
