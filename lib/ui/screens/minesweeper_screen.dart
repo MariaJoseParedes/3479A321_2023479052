@@ -74,6 +74,19 @@ class MinesweeperScreen extends StatelessWidget {
               ),
             ),
             const Divider(height: 1),
+            if (viewModel.isGameOver)
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'Perdiste',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 175, 33, 23),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             // Área de Juego
             Expanded(
               //Expande el tablero para llenar la pantalla
