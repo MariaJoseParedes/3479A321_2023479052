@@ -20,6 +20,13 @@ class MinesweeperScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.refresh_outlined),
+          tooltip: 'Reiniciar juego',
+          onPressed: () {
+            viewModel.resetGame();
+          },
+        ),
         title: Text(
           'Buscaminas',
           style: GoogleFonts.pressStart2p(
