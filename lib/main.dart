@@ -8,11 +8,11 @@ import 'package:my_app/viewmodels/game_view_model.dart';
 import 'package:provider/provider.dart';
 import 'core/services/storage_service.dart';
 import 'ui/screens/settings_screen.dart';
+import 'package:my_app/viewmodels/settings_view_model.dart';
 
 var logger = Logger();
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
 
   await StorageService.init(); // Inicializa el servicio de almacenamiento
@@ -22,8 +22,12 @@ void main() async {
   logger.w('Iniciando la aplicación de Buscaminas'); // Warning
   logger.e('Iniciando la aplicación de Buscaminas'); // Error
 
-  runApp(const MyApp());
-
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => SettingsViewModel())],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
