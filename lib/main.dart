@@ -7,6 +7,7 @@ import 'package:my_app/ui/screens/menu_screen.dart';
 import 'package:my_app/viewmodels/game_view_model.dart';
 import 'package:provider/provider.dart';
 import 'core/services/storage_service.dart';
+import 'ui/screens/settings_screen.dart';
 
 var logger = Logger();
 
@@ -20,7 +21,7 @@ void main() async {
   logger.i('Iniciando la aplicación de Buscaminas'); // Info
   logger.w('Iniciando la aplicación de Buscaminas'); // Warning
   logger.e('Iniciando la aplicación de Buscaminas'); // Error
-  
+
   runApp(const MyApp());
 
 }
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         ),
         '/history': (context) => const HistoryScreen(),
         '/about': (context) => const AboutScreen(),
+        '/settings': (context) => const SettingsScreen(),
       },
       title: 'Buscaminas',
       theme: ThemeData(

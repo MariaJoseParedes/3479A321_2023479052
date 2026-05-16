@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_app/core/services/storage_service.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var username = StorageService.getUsername();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -21,6 +24,10 @@ class MenuScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            
+            Text('Pantalla de menu, bienvenido! $username'),
+
+            const SizedBox(height: 20), // Espacio entre el texto y el botón
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(200, 60),
