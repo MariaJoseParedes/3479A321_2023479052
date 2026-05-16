@@ -4,18 +4,25 @@ import 'package:my_app/ui/screens/about.dart';
 import 'package:my_app/ui/screens/minesweeper_screen.dart';
 import 'package:my_app/ui/screens/history_screen.dart';
 import 'package:my_app/ui/screens/menu_screen.dart';
-import 'package:my_app/models/game_view_model.dart';
+import 'package:my_app/viewmodels/game_view_model.dart';
 import 'package:provider/provider.dart';
-//import 'package:shared_preferences/shared_preferences.dart';
+import 'core/services/storage_service.dart';
 
 var logger = Logger();
 
-void main() {
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await StorageService.init(); // Inicializa el servicio de almacenamiento
+
   logger.d('Iniciando la aplicación de Buscaminas'); // Debug
   logger.i('Iniciando la aplicación de Buscaminas'); // Info
   logger.w('Iniciando la aplicación de Buscaminas'); // Warning
   logger.e('Iniciando la aplicación de Buscaminas'); // Error
+  
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {

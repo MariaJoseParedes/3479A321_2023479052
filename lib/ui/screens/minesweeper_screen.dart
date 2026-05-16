@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 //import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import 'package:my_app/models/cell_model.dart';
-import 'package:my_app/models/game_view_model.dart';
+import 'package:my_app/viewmodels/game_view_model.dart';
 import 'package:my_app/ui/widgets/mine_cell.dart';
 //import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
