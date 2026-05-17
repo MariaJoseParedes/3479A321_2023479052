@@ -14,6 +14,7 @@ class MinesweeperScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final difficulty = context.watch<SettingsViewModel>().difficulty;
+    final viewModel = context.watch<GameViewModel>();
 
     return Scaffold(
       appBar: AppBar(
@@ -59,9 +60,12 @@ class MinesweeperScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Image.asset('assets/icons/reloj.png', width: 30, height: 30),
-                  const Text(
-                    '349 s',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  Text(
+                    '${viewModel.secondsElapsed} s',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Image.asset('assets/icons/bomba.png', width: 30, height: 30),
                   Text('Minas: 10', style: TextStyle(fontSize: 18)),
@@ -71,7 +75,7 @@ class MinesweeperScreen extends StatelessWidget {
               ),
             ),
             const Divider(height: 1),
-            if (context.read<GameViewModel>().isGameOver)
+            if (viewModel.isGameOver)
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
@@ -87,7 +91,7 @@ class MinesweeperScreen extends StatelessWidget {
             // Área de Juego
             Expanded(
               //Expande el tablero para llenar la pantalla
-              child: _gameBoard(context.read<GameViewModel>()),
+              child: _gameBoard(viewModel),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),

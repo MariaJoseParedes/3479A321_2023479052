@@ -25,6 +25,9 @@ class GameViewModel extends ChangeNotifier {
 
   void _generateBoard() {
     _isGameOver = false;
+    _timer?.cancel();
+    secondsElapsed = 0;
+    _isFirstTap = true;
     _cells = List.generate(totalCells, (i) => CellModel(index: i));
 
     Random random = Random();
@@ -80,11 +83,17 @@ class GameViewModel extends ChangeNotifier {
     // Si ya terminó el juego o la celda ya fue revelada, ignoramos el click
     if (_isGameOver || _cells[index].isRevealed) return;
 
+    if (_isFirstTap) {
+      _startTimer();
+      _isFirstTap = false;
+    }
+
     _cells[index].isRevealed = true;
 
     // Si toca una bomba, el juego termina
     if (_cells[index].isBomb) {
       _isGameOver = true;
+      _timer?.cancel();
       _revealAll();
     }
 
