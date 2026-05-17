@@ -39,7 +39,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '/menu': (context) => const MenuScreen(),
         '/game': (context) => ChangeNotifierProvider(
-          create: (context) => GameViewModel(),
+          create: (context) => GameViewModel(
+            gridSize: context.read<SettingsViewModel>().gridSize,
+          ),
           child: const MinesweeperScreen(),
         ),
         '/history': (context) => const HistoryScreen(),
@@ -51,7 +53,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 90, 58, 109),
           primary: const Color.fromARGB(255, 97, 114, 209),
-          secondary: const Color.fromARGB(255, 143, 149, 247),
+          secondary: const Color.fromARGB(255, 211, 214, 253),
         ),
         scaffoldBackgroundColor: const Color.fromARGB(
           255,
@@ -65,7 +67,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: ChangeNotifierProvider(
-        create: (context) => GameViewModel(),
+        create: (context) =>
+            GameViewModel(gridSize: context.read<SettingsViewModel>().gridSize),
         child: const MinesweeperScreen(),
       ),
     );
