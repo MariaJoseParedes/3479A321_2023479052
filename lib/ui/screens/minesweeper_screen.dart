@@ -7,6 +7,7 @@ import 'package:my_app/viewmodels/settings_view_model.dart';
 import 'package:my_app/ui/widgets/mine_cell.dart';
 //import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class MinesweeperScreen extends StatelessWidget {
   const MinesweeperScreen({super.key});
@@ -33,6 +34,18 @@ class MinesweeperScreen extends StatelessWidget {
           ),
         ),
         actions: [
+          if (viewModel.isGameOver)
+            IconButton(
+              icon: const Icon(Icons.share),
+              onPressed: () {
+                final String mensaje =
+                    '¡Acabo de jugar Buscaminas Pro!\n'
+                    'dificultad: $difficulty\n'
+                    'Tiempo de supervivencia: ${viewModel.secondsElapsed} segundos.\n'
+                    '¡Intenta superarme!';
+                SharePlus.instance.share(ShareParams(text: mensaje));
+              },
+            ),
           IconButton(
             icon: const Icon(Icons.info_outline),
             tooltip: 'Acerca de',
