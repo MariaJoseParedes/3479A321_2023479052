@@ -1,4 +1,4 @@
-package com.example.my_app
+package cl.paredes.buscaminas
 
 import io.flutter.embedding.android.FlutterActivity
 
