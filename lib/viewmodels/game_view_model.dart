@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import '../models/cell_model.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:sensors_plus/sensors_plus.dart';
 
 class GameViewModel extends ChangeNotifier {
   List<CellModel> _cells = [];
@@ -17,6 +18,7 @@ class GameViewModel extends ChangeNotifier {
   bool _isFirstTap = true;
 
   final AudioPlayer _sfxPlayer = AudioPlayer();
+  StreamSubscription? _accelerometerSubscription;
 
   List<CellModel> get cells => _cells;
   bool get isGameOver => _isGameOver;
@@ -24,6 +26,18 @@ class GameViewModel extends ChangeNotifier {
   GameViewModel({required this.gridSize}) {
     totalCells = gridSize * gridSize; // Ej: 10x10 = 100 celdas
     _generateBoard();
+    _initAccelerometer();
+  }
+
+  void _initAccelerometer() {
+    _accelerometerSubscription = accelerometerEventStream().listen((
+      AccelerometerEvent event,
+    ) {
+      // Agitar fuerte (eje X) para reiniciar.
+      if (_isGameOver && event.x.abs() > 15.0) {
+        resetGame();
+      }
+    });
   }
 
   void _playSound(String fileName) async {
@@ -128,6 +142,8 @@ class GameViewModel extends ChangeNotifier {
   void dispose() {
     _timer?.cancel(); // Cancela el temporizador activo
     _sfxPlayer.dispose(); // Libera recursos del reproductor de audio
+    _accelerometerSubscription
+        ?.cancel(); // Cancela la suscripción al acelerómetro
     super.dispose(); // Llama a la clase padre obligatoriamente
   }
 }
