@@ -2,6 +2,7 @@ import 'dart:math';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../models/cell_model.dart';
+import 'package:logger/logger.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
@@ -33,6 +34,8 @@ class GameViewModel extends ChangeNotifier {
     _accelerometerSubscription = accelerometerEventStream().listen((
       AccelerometerEvent event,
     ) {
+
+      Logger().i('Valor obtenido de event.x.abs(): ${event.x.abs()}');
       // Agitar fuerte (eje X) para reiniciar.
       if (_isGameOver && event.x.abs() > 15.0) {
         resetGame();
